@@ -1,29 +1,49 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 
-float calculateTime(int t1, int t2, int t3) {
-    float speed1 = 1.0 / t1;
-    float speed2 = 1.0 / t2;
-    float speed3 = 1.0 / t3;
-    float totalSpeed = speed1 + speed2 + speed3;
-    float totalTime = 1.0 / totalSpeed;
-    return totalTime;
+int gcd(int a, int b) {
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
 }
 
 int main() {
-    int t1, t2, t3;
-    SetConsoleCP(1251);
-    SetConsoleOutputCP(1251);
+    int p;
 
-    printf("Ââåä³òü òðè çíà÷åííÿ: ");
-    scanf_s("%d %d %d", &t1, &t2, &t3);
+    scanf_s("%d", &p);
 
+    
+    int* numbers = (int*)malloc(p * sizeof(int));
 
-    float time = calculateTime(t1, t2, t3);
+    
+    if (numbers == NULL) {
+        printf("�� ������� ������� ���'���.\n");
+        return 1;
+    }
 
+    
+    for (int i = 0; i < p; i++) {
+        scanf_s("%d", &numbers[i]);
+    }
 
-    printf("×àñ, íåîáõ³äíèé äëÿ ç'¿äàííÿ ïèðîãà: %.2f ãîäèí\n", time);
+    int result = numbers[0];
+    for (int i = 1; i < p; i++) {
+        result = lcm(result, numbers[i]);
+    }
+
+    
+    printf("%d\n", result);
+
+    free(numbers);
 
     return 0;
 }
-
