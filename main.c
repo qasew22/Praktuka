@@ -15,14 +15,14 @@ int main() {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-    printf("Введіть три значення: ");
+    printf("Г‚ГўГҐГ¤ВіГІГј ГІГ°ГЁ Г§Г­Г Г·ГҐГ­Г­Гї: ");
     scanf_s("%d %d %d", &t1, &t2, &t3);
 
 
     float time = calculateTime(t1, t2, t3);
 
 
-    printf("Час, необхідний для з'їдання пирога: %.2f годин\n", time);
+    printf("Г—Г Г±, Г­ГҐГ®ГЎГµВіГ¤Г­ГЁГ© Г¤Г«Гї Г§'ВїГ¤Г Г­Г­Гї ГЇГЁГ°Г®ГЈГ : %.2f ГЈГ®Г¤ГЁГ­\n", time);
 
     return 0;
 }
