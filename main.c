@@ -1,49 +1,29 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 
-int gcd(int a, int b) {
-    while (b != 0) {
-        int temp = b;
-        b = a % b;
-        a = temp;
-    }
-    return a;
-}
-
-
-int lcm(int a, int b) {
-    return (a * b) / gcd(a, b);
+float calculateTime(int t1, int t2, int t3) {
+    float speed1 = 1.0 / t1;
+    float speed2 = 1.0 / t2;
+    float speed3 = 1.0 / t3;
+    float totalSpeed = speed1 + speed2 + speed3;
+    float totalTime = 1.0 / totalSpeed;
+    return totalTime;
 }
 
 int main() {
-    int p;
+    int t1, t2, t3;
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
 
-    scanf_s("%d", &p);
+    printf("Введіть три значення: ");
+    scanf_s("%d %d %d", &t1, &t2, &t3);
 
-    
-    int* numbers = (int*)malloc(p * sizeof(int));
 
-    
-    if (numbers == NULL) {
-        printf("Не вдалося виділити пам'ять.\n");
-        return 1;
-    }
+    float time = calculateTime(t1, t2, t3);
 
-    
-    for (int i = 0; i < p; i++) {
-        scanf_s("%d", &numbers[i]);
-    }
 
-    int result = numbers[0];
-    for (int i = 1; i < p; i++) {
-        result = lcm(result, numbers[i]);
-    }
-
-    
-    printf("%d\n", result);
-
-    free(numbers);
+    printf("Час, необхідний для з'їдання пирога: %.2f годин\n", time);
 
     return 0;
 }
+
